@@ -1,6 +1,7 @@
 #include "array.h"
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 
 void  
 array_init(array_t* array, u32 element_size, u32 init_size)
@@ -71,9 +72,32 @@ array_add(array_t* array, void* element)
 }
 
 void
+array_add_i8(array_t* array, u8 element)
+{
+    array->buf[array->count] = element;
+    array_inc(array);
+}
+
+void
 array_add_i16(array_t* array, u16 element)
 {
     u16* buf = (u16*)array->buf;
+    buf[array->count] = element;
+    array_inc(array);
+}
+
+void
+array_add_i32(array_t* array, u32 element)
+{
+    u32* buf = (u32*)array->buf;
+    buf[array->count] = element;
+    array_inc(array);
+}
+
+void
+array_add_i64(array_t* array, u64 element)
+{
+    u64* buf = (u64*)array->buf;
     buf[array->count] = element;
     array_inc(array);
 }
@@ -118,6 +142,31 @@ array_pop(array_t* array)
         return;
     array->count--;
     array->changed = true;
+
+    size_left = array->size - used_bytes(array);
+    if (size_left > array->min_size)
+        array_resize(array, array->size - array->min_size);
+}
+
+void
+array_erase(array_t* array, u32 idx)
+{
+	if (idx >= array->count)
+		return;
+	else if (idx == array->count - 1)
+	{
+		array_pop(array);
+		return;
+	}
+
+	u64 size_left;
+	u8* buf = array->buf;
+	u8* start = buf + (idx * array->ele_size);
+	u8* next = start + array->ele_size;
+	u64 remaining = (array->count * array->ele_size) - (idx * array->ele_size);
+
+	memmove(start, next, remaining);
+	array->count--;
 
     size_left = array->size - used_bytes(array);
     if (size_left > array->min_size)

@@ -22,7 +22,10 @@ typedef struct array
 void  array_init(array_t* array, u32 element_size, u32 init_size);
 void* array_idx(const array_t* array, u32 idx);
 void  array_add(array_t* array, void* element);
+void  array_add_i8(array_t* array, u8 element);
 void  array_add_i16(array_t* array, u16 element);
+void  array_add_i32(array_t* array, u32 element);
+void  array_add_i64(array_t* array, u64 element);
 void  array_set_resize_cb(array_t* array, array_resize_callback_t cb, 
                           void* user_data);
 /**
@@ -35,5 +38,6 @@ void* array_add_into(array_t* array);
 void  array_clear(array_t* array, bool resize);
 void  array_del(array_t* array);
 void  array_pop(array_t* array);
+void  array_erase(array_t* array, u32 idx);
 
 #endif // _ARRAY_H_
