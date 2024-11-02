@@ -64,7 +64,8 @@ mmframes_clear(mmframes_t* mmf)
 	}
 	array_clear(&mmf->frames, true);
 	mmf->frames.count = 1;
-	frames->idx = 0;
+	frame = (memframe_t*)mmf->frames.buf;
+	frame->idx = 0;
 }
 
 void  
