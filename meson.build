@@ -1,6 +1,7 @@
 cutils_src = files(
     'src/array.c',
     'src/mmframes.c',
+    'src/nlog.c',
 )
 
 cutils_include = include_directories('include/')
