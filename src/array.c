@@ -102,6 +102,14 @@ array_add_i64(array_t* array, u64 element)
     array_inc(array);
 }
 
+void
+array_add_voidp(array_t* array, void* element)
+{
+    void** buf = (void**)array->buf;
+    buf[array->count] = element;
+    array_inc(array);
+}
+
 void* 
 array_add_into(array_t* array)
 {
