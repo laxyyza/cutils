@@ -41,8 +41,8 @@
 static char nlog_str[N_LOG_LEVEL_LEN][NLOG_STR_LEN] = {
     "%s[" FG_RED "FATAL" FG_DEFAULT "]",
     "%s[" FG_RED "ERROR" FG_DEFAULT "]",
-    "%s[" FG_ORANGE "WARN" FG_DEFAULT "]",
-    "%s[" FG_GREEN "INFO" FG_DEFAULT "]",
+    "%s[" FG_ORANGE "WARN" FG_DEFAULT "] ",
+    "%s[" FG_GREEN "INFO" FG_DEFAULT "] ",
     "%s[DEBUG]",
     "%s[VBOSE]",
 };
