@@ -20,4 +20,10 @@ clampf(f32 val, f32 min, f32 max)
 	return fmaxf(min, fminf(val, max));
 }
 
+static inline f32
+percent(f32 per, f32 max)
+{
+	return (per / 100.0) * max;
+}
+
 #endif // _CUTILS_H_
