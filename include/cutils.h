@@ -5,6 +5,7 @@
 #include "array.h"
 #include "mmframes.h"
 #include <math.h>
+#include "cutil_string.h"
 
 static inline i32 
 clampi(i32 val, i32 min, i32 max)
