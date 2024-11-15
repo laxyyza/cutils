@@ -26,7 +26,7 @@ mmframes_push(memframe_t* frame, u64 size)
 	void* ret = NULL;
 	if (frame->idx + size < frame->size)
 	{
-		ret = frame->buf + frame->idx;
+		ret = (u8*)frame->buf + frame->idx;
 		frame->idx += size;
 	}
 	return ret;
