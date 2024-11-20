@@ -8,7 +8,7 @@ static void
 memframe_init(memframe_t* frame, u64 size)
 {
 	frame->size = (size == 0) ? FRAME_SIZE : size;
-	frame->buf = malloc(frame->size);
+	frame->buf = calloc(1, frame->size);
 	frame->idx = 0;
 }
 
