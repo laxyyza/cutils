@@ -3,6 +3,7 @@ cutils_src = files(
     'src/mmframes.c',
     'src/nlog.c',
     'src/cutil_string.c',
+    'src/nano_timer.c',
 )
 
 cutils_include = include_directories('include/')
