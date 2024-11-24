@@ -116,3 +116,9 @@ ns_to_ms(i64 ns)
 {
 	return ns / 1e6;
 }
+
+f64 
+nano_time_s(const hr_time_t* time)
+{
+	return (time->nsec / 1e9) + time->sec;
+}

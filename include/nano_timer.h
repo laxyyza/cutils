@@ -33,4 +33,6 @@ f32 sec_to_ms(f64 s);
 f64 ns_to_sec(i64 ns);
 f32 ns_to_ms(i64 ns);
 
+f64 nano_time_s(const hr_time_t* time);
+
 #endif // _NANO_TIMER_H_
