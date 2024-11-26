@@ -40,6 +40,7 @@ typedef struct
 
 void  mmframes_init(mmframes_t* mmf);
 void* mmframes_alloc(mmframes_t* mmf, u64 size);
+void* mmframes_zalloc(mmframes_t* mmf, u64 size);
 void  mmframes_clear(mmframes_t* mmf);
 void  mmframes_free(mmframes_t* mmf);
 

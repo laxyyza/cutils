@@ -1,6 +1,7 @@
 #include "mmframes.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 #define FRAME_SIZE 4096
 
@@ -48,6 +49,15 @@ mmframes_alloc(mmframes_t* mmf, u64 size)
 	frame = array_add_into(&mmf->frames);
 	memframe_init(frame, (size > FRAME_SIZE) ? size : 0);
 	ret = mmframes_push(frame, size);
+	return ret;
+}
+
+void* 
+mmframes_zalloc(mmframes_t* mmf, u64 size)
+{
+	void* ret;
+	ret = mmframes_alloc(mmf, size);
+	memset(ret, 0, size);
 	return ret;
 }
 

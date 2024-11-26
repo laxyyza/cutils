@@ -64,7 +64,7 @@ array_inc(array_t* array)
 }
 
 void  
-array_add(array_t* array, void* element)
+array_add(array_t* array, const void* element)
 {
     const u32 offset = array->ele_size * array->count;
     memcpy(array->buf + offset, element, array->ele_size);

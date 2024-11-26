@@ -21,7 +21,7 @@ typedef struct array
 
 void  array_init(array_t* array, u32 element_size, u32 init_size);
 void* array_idx(const array_t* array, u32 idx);
-void  array_add(array_t* array, void* element);
+void  array_add(array_t* array, const void* element);
 void  array_add_i8(array_t* array, u8 element);
 void  array_add_i16(array_t* array, u16 element);
 void  array_add_i32(array_t* array, u32 element);
