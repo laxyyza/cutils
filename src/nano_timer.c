@@ -122,3 +122,9 @@ nano_time_s(const hr_time_t* time)
 {
 	return (time->nsec / 1e9) + time->sec;
 }
+
+u64 
+nano_time_ns(const hr_time_t* time)
+{
+	return time->nsec + (time->sec * 1e9);
+}
