@@ -26,6 +26,8 @@
 
 #include "array.h"
 
+#define MMF_DEFAULT_FRAME_SIZE 4096
+
 typedef struct 
 {
 	void*	buf;
@@ -36,9 +38,11 @@ typedef struct
 typedef struct 
 {
 	array_t frames;
+	u64		frame_size;
 } mmframes_t;
 
 void  mmframes_init(mmframes_t* mmf);
+void  mmframes_init2(mmframes_t* mmf, u64 frame_size);
 void* mmframes_alloc(mmframes_t* mmf, u64 size);
 void* mmframes_zalloc(mmframes_t* mmf, u64 size);
 void  mmframes_clear(mmframes_t* mmf);

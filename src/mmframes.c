@@ -3,12 +3,10 @@
 #include <stdio.h>
 #include <string.h>
 
-#define FRAME_SIZE 4096
-
 static void
 memframe_init(memframe_t* frame, u64 size)
 {
-	frame->size = (size == 0) ? FRAME_SIZE : size;
+	frame->size = size;
 	frame->buf = calloc(1, frame->size);
 	frame->idx = 0;
 }
@@ -16,9 +14,16 @@ memframe_init(memframe_t* frame, u64 size)
 void  
 mmframes_init(mmframes_t* mmf)
 {
+	mmframes_init2(mmf, MMF_DEFAULT_FRAME_SIZE);
+}
+
+void  
+mmframes_init2(mmframes_t* mmf, u64 frame_size)
+{
+	mmf->frame_size = frame_size;
 	array_init(&mmf->frames, sizeof(memframe_t), 1);
 	memframe_t* mf = array_add_into(&mmf->frames);
-	memframe_init(mf, 0);
+	memframe_init(mf, mmf->frame_size);
 }
 
 static void*
@@ -47,7 +52,7 @@ mmframes_alloc(mmframes_t* mmf, u64 size)
 			return ret;
 	}
 	frame = array_add_into(&mmf->frames);
-	memframe_init(frame, (size > FRAME_SIZE) ? size : 0);
+	memframe_init(frame, (size > mmf->frame_size) ? size : mmf->frame_size);
 	ret = mmframes_push(frame, size);
 	return ret;
 }
