@@ -1,3 +1,5 @@
+project('cutils', 'c')
+
 cutils_src = files(
     'src/array.c',
     'src/mmframes.c',
